@@ -1,5 +1,8 @@
 packrat/lib*/
 packrat/src/
+data/h171.ssp
+data/h171dat.zip
+data/h171ssp.zip
 .Rproj.user
 .Rhistory
 .Rprofile
