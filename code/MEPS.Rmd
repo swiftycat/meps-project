@@ -1,0 +1,51 @@
+---
+title: "Analytics course MEPS data"
+output: html_notebook
+---
+
+```{r}
+# Understand and predict the drivers of individual healthcare expenditures in a given year
+# including insurance expenditures
+```
+
+
+```{r}
+# Load the data
+load("/home/swifty/MEPS_Project/data/H171.Rdata")
+# Select certain variables
+columns.include <- c("DUPERSID",  # ID
+                     "AGE14X",    # Age at end 2014.  
+                     "SEX",       # Sex.  
+                     "RACEV2X",   # Race.  
+                     "MARRY14X",  # Marital Status.  
+                     "EDRECODE",  # Education Recode. 
+                     "INDCAT31",  # Industry category, Round 5/3
+                     "OCCCAT31",   # Occupation group, Round 5/3
+                     "RTHLTH53",  # Perceived Health Status, Round 5/3
+                     "MNHLTH53",  # Perceived Mental Health Status, Round 5/3
+                     "TTLP14X",   # Person's total income
+                     "FAMINC14",  # Family's total income
+                     "INS14X",    # Insured at end 2014
+                     "TOTEXP14",  # Total health care expenses 14
+                     "TOTSLF14") # Total amount paid by self/family
+H171.reduced <- H171[, columns.include]
+remove(H171)
+library("ggplot2")
+```
+
+```{r}
+ggplot(data=H171.reduced, aes(H171.reduced$AGE14X)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$SEX)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$RACEV2X)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$MARRY14X)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$EDRECODE)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$INDCAT31)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$OCCCAT31)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$RTHLTH53)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$MNHLTH53)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$TTLP14X)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$FAMINC14)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$TOTEXP14)) + geom_histogram()
+ggplot(data=H171.reduced, aes(H171.reduced$TOTSLF14)) + geom_histogram()
+```
+
